@@ -46,6 +46,15 @@ class PopularListVM extends Cubit<PopularListState> {
       emit(ErrorState(errorMessage: e.toString()));
     }
   }
+
+  void loadSearchMovie(String query) async {
+    try {
+      var result = await popularRepository.searchMovie(query);
+      emit(SuccessState(popularList: result));
+    } catch (e) {
+      emit(ErrorState(errorMessage: e.toString()));
+    }
+  }
 }
 
 sealed class PopularListState {}

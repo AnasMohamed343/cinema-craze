@@ -1,3 +1,4 @@
+import 'package:cinema_craze/data/apis/models/movie_similar_response/similar.dart';
 import 'package:cinema_craze/data/apis/models/popular_response/popular.dart';
 import 'package:cinema_craze/data/apis/models/recommended_response/Results.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ import '../../utils/constants.dart';
 class MovieItemWidget extends StatelessWidget {
   Popular? popular;
   Results? recommended;
+  Similar? similar;
   double? height;
   double? width;
   String src;
@@ -17,6 +19,7 @@ class MovieItemWidget extends StatelessWidget {
       this.width,
       this.popular,
       this.recommended,
+      this.similar,
       required this.src});
   @override
   Widget build(BuildContext context) {

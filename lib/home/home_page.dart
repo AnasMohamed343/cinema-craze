@@ -1,4 +1,5 @@
 import 'package:cinema_craze/home/browse_tab_widget/browse_tab_widget.dart';
+import 'package:cinema_craze/home/browse_tab_widget/genres_movie_list.dart';
 import 'package:cinema_craze/home/home_tab/home_tab_widget.dart';
 import 'package:cinema_craze/home/search_tab_widget/search_tab_widget.dart';
 import 'package:cinema_craze/home/watchlist_tab_widget/watchlist_tab_widget.dart';
@@ -7,7 +8,7 @@ import 'package:flutter/material.dart';
 import '../data/apis/models/popular_response/popular.dart';
 
 class HomePage extends StatefulWidget {
-  static const String routeName = 'Home-Page';
+  //static const String routeName = 'HomePage';
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -15,10 +16,10 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int selectedIndex = 0;
-
+  int actualIndex = 0;
   List<Widget> tabs = [
     HomeTabWidget(),
-    SearchTabWidget(),
+    //SearchTabWidget(),
     BrowseTabWidget(),
     WatchlistTabWidget(),
   ];
@@ -34,10 +35,17 @@ class _HomePageState extends State<HomePage> {
         selectedIconTheme: IconThemeData(size: 33),
         iconSize: 30,
         backgroundColor: Color(0xff1A1A1A),
-        currentIndex: selectedIndex,
+        currentIndex: actualIndex,
         onTap: (index) {
-          selectedIndex = index;
-          setState(() {});
+          if (index == 1) {
+            showSearch(context: context, delegate: SearchTabWidget());
+          } else {
+            setState(() {
+              //selectedIndex = index;
+              actualIndex = index;
+              selectedIndex = index > 1 ? index - 1 : index;
+            });
+          }
         },
         items: [
           BottomNavigationBarItem(

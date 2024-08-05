@@ -1,8 +1,11 @@
 import 'package:cinema_craze/di/di.dart';
+import 'package:cinema_craze/home/browse_tab_widget/specific_genres/specific_genres_list_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'home/home_page.dart';
+import 'splash/splash_screen.dart';
+import 'utils/routes_manager.dart';
 
 void main() {
   configureDependencies();
@@ -17,7 +20,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-        designSize: const Size(412, 892),
+        designSize: const Size(412, 867),
         minTextAdapt: true,
         splitScreenMode: true,
         child: MaterialApp(
@@ -29,9 +32,12 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           home: HomePage(),
           routes: {
-            HomePage.routeName: (_) => HomePage(),
+            RoutesManager.homeScreenRoute: (_) => HomePage(),
+            RoutesManager.splashScreenRoute: (_) => SplashScreen(),
+            RoutesManager.specificGenreListScreen: (_) =>
+                SpecificGenreListWidget(),
           },
-          initialRoute: HomePage.routeName,
+          initialRoute: RoutesManager.splashScreenRoute,
         ));
   }
 }

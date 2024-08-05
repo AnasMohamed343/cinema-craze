@@ -24,4 +24,9 @@ class PopularRepositoryImpl extends PopularRepository {
   Future<List<Results>?> getRecommended() {
     return popularDataSource.getRecommended();
   }
+
+  @override
+  Future<List<Popular>?> searchMovie(String query) {
+    return popularDataSource.searchMovie(query);
+  }
 }

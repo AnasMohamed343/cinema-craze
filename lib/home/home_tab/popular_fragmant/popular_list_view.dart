@@ -76,6 +76,7 @@ class _PopularListViewState extends State<PopularListView> {
             options: CarouselOptions(
               height: 289.h,
               autoPlay: false,
+              //autoPlayInterval: const Duration(seconds: 16),
               enlargeCenterPage: true,
               viewportFraction: 1,
               //scrollDirection: Axis.vertical,

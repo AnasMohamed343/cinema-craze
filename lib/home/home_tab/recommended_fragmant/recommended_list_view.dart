@@ -81,8 +81,8 @@ class _RecommendedListViewState extends State<RecommendedListView> {
                   decoration: BoxDecoration(
                       //border: Border.all(color: Colors.black26),
                       borderRadius: BorderRadius.circular(10)),
-                  height: 215.h,
-                  width: 118.w,
+                  height: 228.h,
+                  width: 120.w,
                   child: Card(
                     color: Color(0xff282A28),
                     child: RecommendedMovieItem(

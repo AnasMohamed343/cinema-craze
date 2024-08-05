@@ -5,4 +5,5 @@ abstract class PopularRepository {
   Future<List<Popular>?> getPopular();
   Future<List<Popular>?> getRelease();
   Future<List<Results>?> getRecommended();
+  Future<List<Popular>?> searchMovie(String query);
 }

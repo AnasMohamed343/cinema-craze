@@ -27,4 +27,10 @@ class PopularDataSourceImpl extends PopularDataSource {
     var response = await apiManager.getRelease();
     return response.results;
   }
+
+  @override
+  Future<List<Popular>?> searchMovie(String query) async {
+    var response = await apiManager.searchMovie(query);
+    return response.results;
+  }
 }

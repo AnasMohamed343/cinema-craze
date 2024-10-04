@@ -1,5 +1,6 @@
 import 'package:cinema_craze/data/apis/models/popular_response/popular.dart';
 import 'package:cinema_craze/home/home_tab/release_fragmant/release_list_view.dart';
+import 'package:cinema_craze/utils/colors_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -10,16 +11,16 @@ class ReleaseListWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 198.h,
-      color: Color(0xff282A28),
+      color: ColorsManager.moviesContainerBgColor,
       child: Padding(
         padding: const EdgeInsets.only(left: 20, top: 8, bottom: 9),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'New Releases',
               style: TextStyle(
-                color: Colors.white,
+                color: ColorsManager.whiteColor,
                 fontSize: 23,
               ),
             ),

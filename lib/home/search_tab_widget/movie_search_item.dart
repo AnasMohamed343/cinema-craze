@@ -1,8 +1,7 @@
 import 'package:cinema_craze/data/apis/models/popular_response/popular.dart';
 import 'package:cinema_craze/data/apis/models/specific_genres_response/specific_genre.dart';
 import 'package:cinema_craze/home/movie_details/movie_details_widget.dart';
-import 'package:cinema_craze/utils/constants.dart';
-import 'package:cinema_craze/utils/reusable_functions.dart';
+import 'package:cinema_craze/utils/colors_manager.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -59,8 +58,8 @@ class MovieSearchItem extends StatelessWidget {
               // borderRadius: BorderRadius.only(
               //     topLeft: Radius.circular(7), bottomLeft: Radius.circular(7)),
               child: Image.network(
-                height: 130.h,
-                width: 180.w,
+                height: 160.h,
+                width: 140.w,
                 fit: BoxFit.fill,
                 src,
                 errorBuilder: (context, error, stackTrace) =>
@@ -77,40 +76,40 @@ class MovieSearchItem extends StatelessWidget {
                       title,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
-                      style: TextStyle(
-                        color: Colors.white,
+                      style: const TextStyle(
+                        color: ColorsManager.whiteColor,
                         fontSize: 16,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
                     SizedBox(
-                      height: 9.h,
+                      height: 30.h,
                     ),
                     Text(
                       releaseDate,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w400,
                         color: Colors.grey,
                       ),
                     ),
                     SizedBox(
-                      height: 10.h,
+                      height: 30.h,
                     ),
                     Row(
                       children: [
-                        Icon(
+                        const Icon(
                           Icons.star,
-                          color: Colors.yellow,
+                          color: ColorsManager.primaryColor,
                           size: 25,
                         ),
                         SizedBox(
-                          width: 9.w,
+                          width: 10.w,
                         ),
                         Text(
                           voteAverage,
-                          style: TextStyle(
-                            color: Colors.white,
+                          style: const TextStyle(
+                            color: ColorsManager.whiteColor,
                             fontSize: 17,
                           ),
                         ),

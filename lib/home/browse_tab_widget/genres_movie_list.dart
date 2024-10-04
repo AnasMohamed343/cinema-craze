@@ -2,6 +2,7 @@ import 'package:cinema_craze/di/di.dart';
 import 'package:cinema_craze/home/browse_tab_widget/browse_tab_vm.dart';
 import 'package:cinema_craze/home/browse_tab_widget/genres_item_widget.dart';
 import 'package:cinema_craze/utils/assets_manager.dart';
+import 'package:cinema_craze/utils/colors_manager.dart';
 import 'package:cinema_craze/utils/routes_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -42,10 +43,10 @@ class GenresMovieList extends StatelessWidget {
                 child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CircularProgressIndicator(
-                  color: Color(0xffFFBB3B),
+                 const CircularProgressIndicator(
+                  color:  ColorsManager.primaryColor,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 8,
                 ),
                 Text(state.message),
@@ -59,7 +60,7 @@ class GenresMovieList extends StatelessWidget {
                   onPressed: () {
                     viewModel.fetchGenresList();
                   },
-                  child: Text('Try Again'))
+                  child: const Text('Try Again'))
             ]));
           case SuccessState():
             return Expanded(

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "726922867876",
+    "project_id": "cinema-craze-c126b",
+    "storage_bucket": "cinema-craze-c126b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:726922867876:android:e67b4d29447d10685b6231",
+        "android_client_info": {
+          "package_name": "com.example.cinema_craze"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtI4xgNncVqW0HocR9ssf0YCfg9hnBTvo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,6 +1,8 @@
 import 'package:cinema_craze/data/apis/models/popular_response/popular.dart';
+import 'package:cinema_craze/data/apis/models/watchlist_model/watchlist_model.dart';
 import 'package:cinema_craze/home/movie_details/movie_details_widget.dart';
 import 'package:cinema_craze/home/widgets/play_button.dart';
+import 'package:cinema_craze/utils/colors_manager.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -11,10 +13,12 @@ import 'movie_item_widget.dart';
 
 class PopularItemWidget extends StatelessWidget {
   Popular popular;
-  PopularItemWidget({required this.popular});
+  PopularItemWidget({
+    required this.popular,
+  });
+
   @override
   Widget build(BuildContext context) {
-    //print('Popular ID: ${popular.id}');
     return InkWell(
       onTap: () {
         if (popular.id != null) {
@@ -37,7 +41,7 @@ class PopularItemWidget extends StatelessWidget {
       },
       child: Container(
         height: 292.h,
-        color: Color(0xff121312),
+        color: const Color(0xff121312),
         child: Stack(
           clipBehavior: Clip.none,
           alignment: AlignmentDirectional.topStart,
@@ -56,6 +60,14 @@ class PopularItemWidget extends StatelessWidget {
               child: Row(
                 children: [
                   MovieItemWidget(
+                    watchListModel: WatchListModel(
+                        id: popular.id.toString(),
+                        title: popular.title ?? 'No Title',
+                        image:
+                            '${Constants.imagePath}${popular.posterPath ?? 'https://via.placeholder.com/150'} ',
+                        description: '${popular.overview}',
+                        releaseDate: popular.releaseDate ?? '',
+                        movieId: popular.id ?? 0),
                     popular: popular,
                     height: 190.h,
                     width: 140.w,
@@ -76,15 +88,17 @@ class PopularItemWidget extends StatelessWidget {
                           popular.title ?? 'No Title',
                           overflow: TextOverflow.ellipsis,
                           maxLines: 2,
-                          style: TextStyle(color: Colors.white, fontSize: 14),
+                          style: const TextStyle(
+                              color: ColorsManager.whiteColor, fontSize: 14),
                         ),
                         SizedBox(
                           height: 4.w,
                         ),
                         Text(
                           popular.releaseDate ?? '',
-                          style:
-                              TextStyle(color: Color(0xffB5B4B4), fontSize: 13),
+                          style: const TextStyle(
+                              color: ColorsManager.movieDateColor,
+                              fontSize: 13),
                         ),
                       ],
                     ),

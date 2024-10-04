@@ -1,4 +1,5 @@
 import 'package:cinema_craze/data/apis/models/genres_movies_response/Genres.dart';
+import 'package:cinema_craze/utils/colors_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -21,8 +22,8 @@ class GenresItemWidget extends StatelessWidget {
       ),
       child: Text(
         movieGenre.name ?? '',
-        style: TextStyle(
-          color: Colors.white,
+        style: const TextStyle(
+          color: ColorsManager.whiteColor,
           fontWeight: FontWeight.w700,
           fontSize: 17,
         ),

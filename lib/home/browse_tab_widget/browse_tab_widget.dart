@@ -1,4 +1,5 @@
 import 'package:cinema_craze/home/browse_tab_widget/genres_movie_list.dart';
+import 'package:cinema_craze/utils/colors_manager.dart';
 import 'package:flutter/material.dart';
 
 class BrowseTabWidget extends StatelessWidget {
@@ -6,11 +7,11 @@ class BrowseTabWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color(0xff1E1E1E),
+        backgroundColor: ColorsManager.bgColor,
         appBar: AppBar(
-          iconTheme: IconThemeData(color: Colors.white54),
-          backgroundColor: Color(0xff1E1E1E),
-          title: Text(
+          iconTheme: const IconThemeData(color: Colors.white54),
+          backgroundColor: ColorsManager.bgAppBar,
+          title: const Text(
             'Browse Category',
             style: TextStyle(
                 color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),

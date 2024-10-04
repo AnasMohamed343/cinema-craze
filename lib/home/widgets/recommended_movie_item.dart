@@ -1,24 +1,30 @@
 import 'package:cinema_craze/data/apis/models/recommended_response/Results.dart';
+import 'package:cinema_craze/data/apis/models/watchlist_model/watchlist_model.dart';
 import 'package:cinema_craze/home/movie_details/movie_details_widget.dart';
 import 'package:cinema_craze/home/widgets/movie_item_widget.dart';
+import 'package:cinema_craze/utils/colors_manager.dart';
 import 'package:cinema_craze/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RecommendedMovieItem extends StatelessWidget {
   Results? recommended;
-  RecommendedMovieItem({this.recommended});
+  RecommendedMovieItem({
+    this.recommended,
+  });
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        if (recommended != null && recommended!.id != null) {
+        if (recommended?.id != null) {
+          //widget.recommended != null &&
           Navigator.push(
             context,
             MaterialPageRoute(
               builder: (context) => MovieDetailsScreen(
-                movieId: recommended!.id!,
-                recommended: recommended!,
+                movieId: recommended?.id ?? 0,
+                recommended: recommended,
               ),
             ),
           );
@@ -32,6 +38,14 @@ class RecommendedMovieItem extends StatelessWidget {
       },
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         MovieItemWidget(
+          watchListModel: WatchListModel(
+              id: '${recommended?.id}',
+              title: recommended?.title ?? 'No Title',
+              image:
+                  '${Constants.imagePath}${recommended?.posterPath ?? 'https://via.placeholder.com/150'} ',
+              description: '${recommended?.overview}',
+              releaseDate: recommended?.releaseDate ?? '',
+              movieId: recommended?.id ?? 0),
           src:
               '${Constants.imagePath}${recommended?.posterPath ?? 'https://via.placeholder.com/150'} ',
           height: 122.h,
@@ -44,34 +58,35 @@ class RecommendedMovieItem extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.star,
-                    color: Colors.yellow,
+                    color: ColorsManager.primaryColor,
                     size: 13,
                   ),
                   SizedBox(
                     width: 9.w,
                   ),
                   Text(
-                    recommended!.voteAverage!.toStringAsFixed(1),
-                    style: TextStyle(
+                    recommended?.voteAverage?.toStringAsFixed(1) ?? '0.0',
+                    style: const TextStyle(
                         fontSize: 11,
                         fontWeight: FontWeight.w700,
-                        color: Colors.white),
+                        color: ColorsManager.whiteColor),
                   ),
                 ],
               ),
               Text(
                 '${recommended?.title}',
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(
+                style: const TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white),
+                    color: ColorsManager.whiteColor),
               ),
               Text(
                 '${recommended?.releaseDate}',
-                style: TextStyle(fontSize: 10, color: Colors.white60),
+                style: const TextStyle(
+                    fontSize: 10, color: ColorsManager.movieDateColor),
               ),
             ],
           ),

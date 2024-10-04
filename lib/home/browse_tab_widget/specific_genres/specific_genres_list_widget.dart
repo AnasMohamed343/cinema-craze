@@ -1,6 +1,7 @@
 import 'package:cinema_craze/data/apis/models/genres_movies_response/Genres.dart';
 import 'package:cinema_craze/di/di.dart';
 import 'package:cinema_craze/home/search_tab_widget/movie_search_item.dart';
+import 'package:cinema_craze/utils/colors_manager.dart';
 import 'package:cinema_craze/utils/constants.dart';
 import 'package:cinema_craze/utils/reusable_functions.dart';
 import 'package:flutter/material.dart';
@@ -18,14 +19,14 @@ class SpecificGenreListWidget extends StatelessWidget {
     SpecificGenresListVM viewModel = getIt.get<SpecificGenresListVM>();
     viewModel.fetchSpecificGenres((genres.id).toString());
     return Scaffold(
-      backgroundColor: Color(0xff1E1E1E),
+      backgroundColor:  ColorsManager.bottomNavColor,
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.white54),
-        backgroundColor: Color(0xff1E1E1E),
+        iconTheme: const IconThemeData(color: Colors.white54),
+        backgroundColor:  ColorsManager.bottomNavColor,
         title: Text(
           genres.name ?? '',
-          style: TextStyle(
-              color: Colors.white, fontSize: 17, fontWeight: FontWeight.w700),
+          style: const TextStyle(
+              color:  ColorsManager.whiteColor, fontSize: 17, fontWeight: FontWeight.w700),
         ),
       ),
       body: BlocBuilder<SpecificGenresListVM, SpecificGenresState>(
@@ -37,10 +38,10 @@ class SpecificGenreListWidget extends StatelessWidget {
                   child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  CircularProgressIndicator(
-                    color: Color(0xffFFBB3B),
+                  const CircularProgressIndicator(
+                    color:  ColorsManager.primaryColor,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 8,
                   ),
                   Text(state.message),
@@ -54,15 +55,15 @@ class SpecificGenreListWidget extends StatelessWidget {
                     onPressed: () {
                       viewModel.fetchSpecificGenres((genres.id).toString());
                     },
-                    child: Text('Try Again'))
+                    child: const Text('Try Again'))
               ]));
             case SuccessState():
               return Expanded(
                 child: ListView.separated(
                   separatorBuilder: (BuildContext context, int index) {
                     return Container(
-                      padding: EdgeInsets.symmetric(vertical: 10),
-                      margin: EdgeInsets.symmetric(vertical: 10),
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      margin: const EdgeInsets.symmetric(vertical: 10),
                       height: 1.2.h,
                       width: double.infinity.w,
                       color: Colors.grey.withOpacity(0.4),

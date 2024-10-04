@@ -7,7 +7,7 @@ class GenresItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: 11),
+      margin: const EdgeInsets.only(left: 11),
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
       height: 35.h,
       width: 68.w,
@@ -21,7 +21,7 @@ class GenresItemWidget extends StatelessWidget {
       ),
       child: Text(
         data,
-        style: TextStyle(
+        style: const TextStyle(
             color: Colors.grey, fontSize: 14, fontWeight: FontWeight.w400),
       ),
     );

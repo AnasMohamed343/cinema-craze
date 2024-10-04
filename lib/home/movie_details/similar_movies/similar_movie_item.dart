@@ -1,24 +1,35 @@
 import 'package:cinema_craze/data/apis/models/movie_similar_response/similar.dart';
+import 'package:cinema_craze/data/apis/models/watchlist_model/watchlist_model.dart';
 import 'package:cinema_craze/home/movie_details/movie_details_widget.dart';
 import 'package:cinema_craze/home/widgets/movie_item_widget.dart';
 import 'package:cinema_craze/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class SimilarMovieItem extends StatelessWidget {
+import '../../../utils/colors_manager.dart';
+
+class SimilarMovieItem extends StatefulWidget {
   Similar? similar;
-  SimilarMovieItem({this.similar});
+  SimilarMovieItem({
+    this.similar,
+  });
+
+  @override
+  State<SimilarMovieItem> createState() => _SimilarMovieItemState();
+}
+
+class _SimilarMovieItemState extends State<SimilarMovieItem> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        if (similar != null && similar!.id != null) {
+        if (widget.similar != null && widget.similar!.id != null) {
           Navigator.push(
             context,
             MaterialPageRoute(
               builder: (context) => MovieDetailsScreen(
-                movieId: similar!.id!,
-                similar: similar!,
+                movieId: widget.similar!.id!,
+                similar: widget.similar!,
               ),
             ),
           );
@@ -32,8 +43,16 @@ class SimilarMovieItem extends StatelessWidget {
       },
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         MovieItemWidget(
+          watchListModel: WatchListModel(
+              id: '${widget.similar?.id}',
+              title: widget.similar?.title ?? 'No Title',
+              image:
+                  '${Constants.imagePath}${widget.similar?.posterPath ?? 'https://via.placeholder.com/150'} ',
+              description: '${widget.similar?.overview}',
+              releaseDate: widget.similar?.releaseDate ?? '',
+              movieId: widget.similar?.id ?? 0),
           src:
-              '${Constants.imagePath}${similar?.posterPath ?? 'https://via.placeholder.com/150'} ',
+              '${Constants.imagePath}${widget.similar?.posterPath ?? 'https://via.placeholder.com/150'} ',
           height: 122.h,
           width: 120.w,
         ),
@@ -44,34 +63,35 @@ class SimilarMovieItem extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.star,
-                    color: Colors.yellow,
+                    color: ColorsManager.primaryColor,
                     size: 13,
                   ),
                   SizedBox(
                     width: 9.w,
                   ),
                   Text(
-                    similar!.voteAverage!.toStringAsFixed(1),
-                    style: TextStyle(
+                    widget.similar!.voteAverage!.toStringAsFixed(1),
+                    style: const TextStyle(
                         fontSize: 11,
                         fontWeight: FontWeight.w700,
-                        color: Colors.white),
+                        color: ColorsManager.whiteColor),
                   ),
                 ],
               ),
               Text(
-                '${similar?.title}',
+                '${widget.similar?.title}',
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(
+                style: const TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white),
+                    color: ColorsManager.whiteColor),
               ),
               Text(
-                '${similar?.releaseDate}',
-                style: TextStyle(fontSize: 10, color: Colors.white60),
+                '${widget.similar?.releaseDate}',
+                style: const TextStyle(
+                    fontSize: 10, color: ColorsManager.movieDateColor),
               ),
             ],
           ),

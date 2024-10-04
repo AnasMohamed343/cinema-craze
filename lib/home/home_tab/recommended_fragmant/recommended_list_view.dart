@@ -2,6 +2,7 @@ import 'package:cinema_craze/di/di.dart';
 import 'package:cinema_craze/home/home_tab/popular_fragmant/popular_list_view_model.dart';
 import 'package:cinema_craze/home/widgets/movie_item_widget.dart';
 import 'package:cinema_craze/home/widgets/recommended_movie_item.dart';
+import 'package:cinema_craze/utils/colors_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,12 +23,6 @@ class _RecommendedListViewState extends State<RecommendedListView> {
     viewModel.fetchRecommended();
   }
 
-  // @override
-  // void didUpdateWidget(covariant RecommendedListView oldWidget) {
-  //   super.didUpdateWidget(oldWidget);
-  //   viewModel.fetchRecommended();
-  // }
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<PopularListVM, PopularListState>(
@@ -38,10 +33,10 @@ class _RecommendedListViewState extends State<RecommendedListView> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CircularProgressIndicator(
+                const CircularProgressIndicator(
                   color: Color(0xffFFB224),
                 ),
-                SizedBox(width: 8),
+                const SizedBox(width: 8),
                 Text(state.message),
               ],
             ),
@@ -56,14 +51,14 @@ class _RecommendedListViewState extends State<RecommendedListView> {
                   onPressed: () {
                     viewModel.fetchRecommended();
                   },
-                  child: Text('Try Again'),
+                  child: const Text('Try Again'),
                 ),
               ],
             ),
           );
         } else if (state is SuccessState) {
           if (state.recommendedList == null || state.recommendedList!.isEmpty) {
-            return Center(
+            return const Center(
               child: Text(
                 'No popular movies found.',
                 style: TextStyle(color: Colors.white),
@@ -84,7 +79,7 @@ class _RecommendedListViewState extends State<RecommendedListView> {
                   height: 228.h,
                   width: 120.w,
                   child: Card(
-                    color: Color(0xff282A28),
+                    color:  ColorsManager.moviesContainerBgColor,
                     child: RecommendedMovieItem(
                       recommended: state.recommendedList![index],
                     ),

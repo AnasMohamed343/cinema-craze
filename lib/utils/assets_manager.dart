@@ -19,4 +19,8 @@ class AssetsManager {
   static const String tvGenre = "assets/images/tvMovie.jfif";
   static const String warGenre = "assets/images/war.jfif";
   static const String westernGenre = "assets/images/western.jfif";
+  static const String icWatchListBookmark =
+      'assets/images/ic_watchList_bookmark.png';
+  static const String icBookmark = 'assets/images/ic_bookmark.png';
+  static const String noMovies = 'assets/images/Icon-no-movies.png';
 }
